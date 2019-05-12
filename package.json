@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "name": "webpack-workshop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kisenka/webpack-workshop.git",
+  "author": "Stas Kurilov <qtuzov@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@jetbrains/eslint-config": "^4.0.5",
+    "babel-eslint": "^10.0.1",
+    "clean-webpack-plugin": "^1.0.1",
+    "eslint": "^5.15.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "prettier": "^1.16.4",
+    "style-loader": "^0.23.1",
+    "webpack": "4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {},
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  }
+}

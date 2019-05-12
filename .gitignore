@@ -1,0 +1,11 @@
+.DS_Store
+.idea/*
+!.idea/runConfigurations/
+.eslintcache
+.npm
+.yarn-cache
+.yarn-integrity
+logs
+*.log
+node_modules/
+build
