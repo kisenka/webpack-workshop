@@ -5,7 +5,6 @@ module.exports = {
   devtool: false,
 
   plugins: [
-    new (require('html-webpack-plugin'))(),
     new (require('./parser-plugin'))()
   ]
 };
