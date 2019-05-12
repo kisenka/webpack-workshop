@@ -1,10 +1,8 @@
 {
   "private": true,
-  "name": "webpack-workshop",
+  "name": "webpack-workshop-boilerplate",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:kisenka/webpack-workshop.git",
-  "author": "Stas Kurilov <qtuzov@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@jetbrains/eslint-config": "^4.0.5",
