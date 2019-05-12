@@ -23,6 +23,7 @@
   },
   "dependencies": {},
   "scripts": {
+    "clean": "rm -rf ./demos/*/dist",
     "build": "webpack",
     "start": "webpack-dev-server"
   }
