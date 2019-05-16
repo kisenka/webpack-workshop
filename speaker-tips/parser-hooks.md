@@ -5,8 +5,7 @@ parser.hooks.importSpecifier
   });
 
 parser.hooks.expressionAnyMember
-  .for('imported var')
-  .tap(namespace, (expr) => {
+  .tap('imported var', namespace, (expr) => {
     // parser.state
   });
 ```
