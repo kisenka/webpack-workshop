@@ -28,6 +28,6 @@ module.exports = {
 
   plugins: [
     new ExtractPlugin(),
-    new (require('./plugin/plugin'))()
+    new (require('./plugin/OptimizeCssModulesPlugin'))()
   ]
 };

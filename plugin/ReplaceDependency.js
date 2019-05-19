@@ -1,12 +1,10 @@
 const Dependency = require('webpack/lib/Dependency');
 
 class ReplaceDependency extends Dependency {
-  constructor(module, range, value) {
+  constructor(range, value) {
     super();
-    this.module = module;
     this.range = range;
     this.value = value;
-
   }
 }
 

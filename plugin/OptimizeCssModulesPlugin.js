@@ -2,7 +2,7 @@ const ReplaceDependency = require('./ReplaceDependency');
 
 const PLUGIN_NAME = 'OptimizeCssModulesPlugin';
 
-class HelloWorldPlugin {
+class OptimizeCssModulesPlugin {
   constructor() {
     this.imports = new Map();
   }
@@ -119,7 +119,6 @@ class HelloWorldPlugin {
             }
 
             const replaceDep = new ReplaceDependency(
-              module,
               usage.range,
               JSON.stringify(usage.value)
             );
@@ -133,8 +132,9 @@ class HelloWorldPlugin {
   getAllUsages() {
     return Array
       .from(this.imports.values())
-      .map(item => item.usages);
+      .map(item => item.usages)
+      .reduce((acc, usage) => acc.concat(usage), [])
   }
 }
 
-module.exports = HelloWorldPlugin;
+module.exports = OptimizeCssModulesPlugin;
