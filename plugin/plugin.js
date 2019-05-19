@@ -68,6 +68,26 @@ class HelloWorldPlugin {
       });
   }
 
+  findIsolatedClassNames(cssModule, parents, messages) {
+    parents.forEach(m => {
+      const usages = this.imports.get(m.request).usages;
+
+      usages.forEach(usage => {
+        const msg = messages.find(m => m.item && m.item.key === usage.name);
+
+        if (msg) {
+          usage.value = msg.item.value;
+        }
+      })
+    });
+  }
+
+  getAllUsages() {
+    return Array
+      .from(this.imports.values())
+      .map(item => item.usages);
+  }
+
   getModuleParents(cssModule, compilation) {
     const isChildCompiler = compilation.compiler.isChild();
 
