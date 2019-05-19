@@ -1,5 +1,9 @@
+const ExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
-  entry: './src/main',
+  entry: {
+    main: './src/main'
+  },
 
   mode: 'development',
   devtool: false,
@@ -9,7 +13,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          ExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -20,5 +24,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+
+  plugins: [
+    new ExtractPlugin(),
+    new (require('./_speaker-tips/plugin'))()
+  ]
 };
