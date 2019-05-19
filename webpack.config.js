@@ -28,6 +28,6 @@ module.exports = {
 
   plugins: [
     new ExtractPlugin(),
-    new (require('./_speaker-tips/plugin'))()
+    new (require('./plugin/plugin'))()
   ]
 };
