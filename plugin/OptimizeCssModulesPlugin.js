@@ -9,11 +9,11 @@ class OptimizeCssModulesPlugin {
 
   apply(compiler) {
     // 1. Extract usages
-    compiler.hooks.normalModuleFactory.tap(PLUGIN_NAME, factory => {
-      factory.hooks.parser.for('javascript/auto').tap(PLUGIN_NAME, parser => {
-        this.extractUsages(parser);
-      });
-    });
+    // compiler.hooks.normalModuleFactory.tap(PLUGIN_NAME, factory => {
+    //   factory.hooks.parser.for('javascript/auto').tap(PLUGIN_NAME, parser => {
+    //     this.extractUsages(parser);
+    //   });
+    // });
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, compilation => {
       // 2. Share plugin data with loader
