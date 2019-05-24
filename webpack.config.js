@@ -13,7 +13,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          ExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -27,7 +27,6 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractPlugin(),
     new (require('./plugin/OptimizeCssModulesPlugin'))()
   ]
 };
