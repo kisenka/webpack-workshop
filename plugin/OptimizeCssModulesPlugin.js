@@ -9,28 +9,28 @@ class OptimizeCssModulesPlugin {
 
   apply(compiler) {
     // 1. Extract usages
-    // compiler.hooks.normalModuleFactory.tap(PLUGIN_NAME, factory => {
-    //   factory.hooks.parser.for('javascript/auto').tap(PLUGIN_NAME, parser => {
-    //     this.extractUsages(parser);
-    //   });
-    // });
+    compiler.hooks.normalModuleFactory.tap(PLUGIN_NAME, factory => {
+      factory.hooks.parser.for('javascript/auto').tap(PLUGIN_NAME, parser => {
+        this.extractUsages(parser);
+      });
+    });
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, compilation => {
       // 2. Share plugin data with loader
-      // compilation.hooks.normalModuleLoader.tap(PLUGIN_NAME, loaderCtx => {
-      //   loaderCtx[PLUGIN_NAME] = this;
-      // });
+      compilation.hooks.normalModuleLoader.tap(PLUGIN_NAME, loaderCtx => {
+        loaderCtx[PLUGIN_NAME] = this;
+      });
 
       // 3. Register custom dependency
-      // compilation.dependencyTemplates.set(
-      //   ReplaceDependency,
-      //   new ReplaceDependency.Template()
-      // );
+      compilation.dependencyTemplates.set(
+        ReplaceDependency,
+        new ReplaceDependency.Template()
+      );
 
       // 3. Inline classnames
-      // compilation.hooks.afterOptimizeDependencies.tap(PLUGIN_NAME, modules => {
-      //   this.inlineClassNames(modules);
-      // });
+      compilation.hooks.afterOptimizeDependencies.tap(PLUGIN_NAME, modules => {
+        this.inlineClassNames(modules);
+      });
     });
   }
 
