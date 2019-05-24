@@ -87,7 +87,7 @@ class OptimizeCssModulesPlugin {
     });
   }
 
-  findIsolatedClassNames(cssModule, parents, messages) {
+  saveFinalClassNames(cssModule, parents, messages) {
     parents.forEach(m => {
       const usages = this.imports.get(m.request).usages;
 
