@@ -8,31 +8,36 @@ class OptimizeCssModulesPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.normalModuleFactory.tap(PLUGIN_NAME, factory => {
-      factory.hooks.parser.for('javascript/auto').tap(PLUGIN_NAME, parser => {
-        this.extractUsages(parser);
-      });
-    });
+    // 1. Extract usages
+    // compiler.hooks.normalModuleFactory.tap(PLUGIN_NAME, factory => {
+    //   factory.hooks.parser.for('javascript/auto').tap(PLUGIN_NAME, parser => {
+    //     this.extractUsages(parser);
+    //   });
+    // });
 
     compiler.hooks.compilation.tap(PLUGIN_NAME, compilation => {
-      compilation.hooks.normalModuleLoader.tap(PLUGIN_NAME, loaderCtx => {
-        loaderCtx[PLUGIN_NAME] = this;
-      });
+      // 2. Share plugin data with loader
+      // compilation.hooks.normalModuleLoader.tap(PLUGIN_NAME, loaderCtx => {
+      //   loaderCtx[PLUGIN_NAME] = this;
+      // });
 
-      compilation.dependencyTemplates.set(
-        ReplaceDependency,
-        new ReplaceDependency.Template()
-      );
+      // 3. Register custom dependency
+      // compilation.dependencyTemplates.set(
+      //   ReplaceDependency,
+      //   new ReplaceDependency.Template()
+      // );
 
-      compilation.hooks.afterOptimizeDependencies.tap(PLUGIN_NAME, modules => {
-        this.inlineClassNames(modules);
-      });
+      // 3. Inline classnames
+      // compilation.hooks.afterOptimizeDependencies.tap(PLUGIN_NAME, modules => {
+      //   this.inlineClassNames(modules);
+      // });
     });
   }
 
   extractUsages(parser) {
     const imports = this.imports;
 
+    // Collect CSS imports
     parser.hooks.importSpecifier
       .tap(PLUGIN_NAME, (expr, path, exportName, name) => {
         if (!path.endsWith('.css')) {
@@ -47,6 +52,7 @@ class OptimizeCssModulesPlugin {
         });
       });
 
+    // Collect CSS classes usages
     parser.hooks.expressionAnyMember
       .for('imported var')
       .tap(PLUGIN_NAME, (expr) => {
